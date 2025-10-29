@@ -1,0 +1,222 @@
+/* ===== RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #fff;
+    background-image: url("Imagens/Arte\ de\ Fundo.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Fundo segue o scroll */
+    scroll-behavior: smooth;
+}
+
+
+/* ===== HEADER ===== */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+
+    z-index: 1000;
+    transition: 0.3s ease-in-out;  /* TRANSIÇÃO SUAVE */
+}
+
+/* LOGO */
+.logo img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
+
+/* ===== NAVBAR DESKTOP ===== */
+.nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+.nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: 0.3s ease-in-out;
+}
+
+/* HOVER ROXO */
+.nav a:hover {
+    color: #a347ff;
+}
+
+/* ===== MENU MOBILE BOTÃO ===== */
+#menu-btn {
+    display: none;
+    font-size: 30px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+/* ===== MENU MOBILE ===== */
+.mobile-nav {
+    display: none;
+    flex-direction: column;
+    background-color: #111;
+    width: 100%;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    gap: 15px;
+    padding: 20px;
+}
+
+.mobile-nav ul {
+    list-style: none;
+}
+
+.mobile-nav a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.1rem;
+    display: block;
+    padding: 12px 0;
+    border-bottom: 1px solid #222;
+    transition: 0.3s;
+}
+
+.mobile-nav a:hover {
+    color: #a347ff;
+}
+
+/* ===== SHOW MOBILE MENU ===== */
+.mobile-nav.show {
+    display: flex;
+}
+
+
+/* ===== HERO ===== */
+.hero {
+    height: 100vh;
+    width: 100%;
+    background-image: url("Imagens/Arte\ de\ Fundo.jpg");
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* FADE IN ENTRADA */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 1s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0px);
+}
+
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 768px) {
+
+    /* Ocultar menu desktop */
+    .nav {
+        display: none;
+    }
+
+    /* Mostrar botão mobile */
+    #menu-btn {
+        display: block;
+    }
+}
+
+/* ===== SOBRE MIM ===== */
+
+.sobre {
+    width: 100%;
+    min-height: 100vh;
+    padding: 100px 10%;
+    background-color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sobre-container {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+}
+
+.sobre-img img {
+    width: 330px;
+    height: 330px;
+    border-radius: 10px;
+    object-fit: cover;
+    border: 3px solid #a347ff;
+    box-shadow: 0 0 15px #a347ff66;
+}
+
+.sobre-texto h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #a347ff;
+}
+
+.sobre-texto p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    text-align: justify;
+    line-height: 1.6;
+}
+
+.sobre-texto h3 {
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+    color: #fff;
+}
+
+.habilidades {
+    list-style: none;
+    display: grid;
+    gap: 8px;
+}
+
+.habilidades li {
+    font-size: 1rem;
+}
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 768px) {
+
+    .sobre-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .sobre-img img {
+        width: 250px;
+        height: 250px;
+    }
+}
