@@ -28,3 +28,88 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.2 });
 
 elements.forEach(el => observer.observe(el));
+
+// ===== FILTRO DO PORTFÓLIO (sem "todos") =====
+const filtroBtns = document.querySelectorAll(".filtro-btn");
+const items = document.querySelectorAll(".galeria .item");
+
+// DEFINIR FILTRO INICIAL (feed, stories, reels ou video)
+let filtroInicial = "feed";
+
+// Aplicar filtro inicial ao carregar a página
+window.addEventListener("DOMContentLoaded", () => {
+    aplicarFiltro(filtroInicial);
+    document.querySelector(`[data-filter="${filtroInicial}"]`).classList.add("ativo");
+});
+
+function aplicarFiltro(filtro) {
+    items.forEach(item => {
+        item.style.display = item.classList.contains(filtro) ? "block" : "none";
+    });
+}
+
+// Quando o usuário clica em um botão de filtro
+filtroBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+
+        // remover ativo de todos
+        filtroBtns.forEach(b => b.classList.remove("ativo"));
+        btn.classList.add("ativo");
+
+        // pegar filtro
+        const filtro = btn.dataset.filter;
+
+        // aplicar filtro
+        aplicarFiltro(filtro);
+    });
+});
+
+
+
+/* LIGHTBOX */
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+const lightboxVideo = document.getElementById("lightbox-video");
+
+let currentIndex = 0;
+
+/* Abrir lightbox */
+itens.forEach((item, index) => {
+    item.addEventListener("click", () => {
+        currentIndex = index;
+
+        const imgSrc = item.dataset.img;
+        const vidSrc = item.dataset.video;
+
+        if (imgSrc) {
+            lightboxVideo.style.display = "none";
+            lightboxImg.style.display = "block";
+            lightboxImg.src = imgSrc;
+        }
+
+        if (vidSrc) {
+            lightboxImg.style.display = "none";
+            lightboxVideo.style.display = "block";
+            lightboxVideo.src = vidSrc;
+        }
+
+        lightbox.style.display = "flex";
+    });
+});
+
+/* FECHAR LIGHTBOX */
+document.querySelector(".close-btn").addEventListener("click", () => {
+    lightbox.style.display = "none";
+    lightboxVideo.pause();
+});
+
+/* NAVEGAÇÃO */
+document.getElementById("prev").addEventListener("click", () => {
+    currentIndex = (currentIndex === 0) ? itens.length - 1 : currentIndex - 1;
+    itens[currentIndex].click();
+});
+
+document.getElementById("next").addEventListener("click", () => {
+    currentIndex = (currentIndex === itens.length - 1) ? 0 : currentIndex + 1;
+    itens[currentIndex].click();
+});
