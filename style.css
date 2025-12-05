@@ -431,3 +431,108 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+/* ===== PLANOS ===== */
+
+.planos {
+    padding: 100px 10%;
+    text-align: center;
+    background-color: rgba(0,0,0,0.9);
+}
+
+.planos-container {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 35px;
+}
+
+.plano-card {
+    background: rgba(255,255,255,0.05);
+    padding: 35px;
+    border-radius: 15px;
+    border: 1px solid rgba(163, 71, 255, 0.3);
+    backdrop-filter: blur(4px);
+    transition: 0.3s;
+}
+
+.plano-card:hover {
+    transform: scale(1.05);
+    border-color: #a347ff;
+}
+
+.plano-card h3 {
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+    color: #a347ff;
+}
+
+.plano-preco {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+.plano-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.plano-card ul li {
+    margin: 10px 0;
+    font-size: 1rem;
+}
+
+.btn-plano {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    border-radius: 8px;
+    background-color: #a347ff;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-plano:hover {
+    background-color: #7d28d6;
+}
+
+/* Destaque (Plano Intermediário) */
+.destaque {
+    background: rgba(163, 71, 255, 0.15);
+    border: 2px solid #a347ff;
+    transform: scale(1.07);
+}
+
+.tag-mais-vendido {
+    background-color: #a347ff;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 15px;
+    display: inline-block;
+}
+
+.destaque-btn {
+    background-color: #c77dff;
+}
+
+.destaque-btn:hover {
+    background-color: #a347ff;
+}
+
+/* RESPONSIVO */
+@media(max-width: 900px) {
+    .planos-container {
+        grid-template-columns: 1fr;
+    }
+
+    .destaque {
+        transform: scale(1.03);
+    }
+}
