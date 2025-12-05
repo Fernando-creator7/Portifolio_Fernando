@@ -74,7 +74,7 @@ const lightboxVideo = document.getElementById("lightbox-video");
 let currentIndex = 0;
 
 /* Abrir lightbox */
-itens.forEach((item, index) => {
+items.forEach((item, index) => {
     item.addEventListener("click", () => {
         currentIndex = index;
 
@@ -97,6 +97,7 @@ itens.forEach((item, index) => {
     });
 });
 
+
 /* FECHAR LIGHTBOX */
 document.querySelector(".close-btn").addEventListener("click", () => {
     lightbox.style.display = "none";
@@ -105,11 +106,29 @@ document.querySelector(".close-btn").addEventListener("click", () => {
 
 /* NAVEGAÇÃO */
 document.getElementById("prev").addEventListener("click", () => {
-    currentIndex = (currentIndex === 0) ? itens.length - 1 : currentIndex - 1;
-    itens[currentIndex].click();
+    currentIndex = (currentIndex === 0) ? items.length - 1 : currentIndex - 1;
+    items[currentIndex].click();
 });
 
 document.getElementById("next").addEventListener("click", () => {
-    currentIndex = (currentIndex === itens.length - 1) ? 0 : currentIndex + 1;
-    itens[currentIndex].click();
+    currentIndex = (currentIndex === items.length - 1) ? 0 : currentIndex + 1;
+    items[currentIndex].click();
+});
+
+/* BOTÃO VOLTAR AO TOPO */
+const topBtn = document.getElementById("top-btn");
+
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 400) {
+        topBtn.classList.add("show");
+    } else {
+        topBtn.classList.remove("show");
+    }
+});
+
+topBtn.addEventListener("click", () => {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 });
